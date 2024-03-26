@@ -17,7 +17,10 @@ public class Employee implements MyFileIO, Serializable{
     private String name;
     private String dob;
     private String address;
-
+    String employeeNumberStr = "Employee number";
+    String employeeNameStr = "Employee name";
+    String dateOfBirthStr = "Date of birth";
+    String addressStr = "Address";
 
     public Employee() {
         this.eNumber = 0;
@@ -54,8 +57,6 @@ public class Employee implements MyFileIO, Serializable{
             System.out.println("Wrong input type. " + e);
         } catch (Exception e) {
             System.out.println("Error: " + e);
-        } finally {
-            input.nextLine();
         }
     }
 
@@ -64,10 +65,10 @@ public class Employee implements MyFileIO, Serializable{
         format.format("%d, %s, %s, %s, ", this.eNumber, this.name, this.dob, this.address);
     }
 
-    /*Driver Employee number: 1, Employee name: John Smith, Date of birth: 02-12-1971, Address: 42 Victoria
-St. Hurstville NSW 2456, License: 10001, Position: AVAILABLE*/
+
     @Override
     public String toString() {
-        return String.format("Employee number: %d, Employee name: %s, Date of birth: %s, Address: %s, ", this.eNumber, this.name, this.dob, this.address);
+        return String.format("%s:%d,%s:%s,%s:%s,%s:%s,", employeeNumberStr, this.eNumber, employeeNameStr, this.name, dateOfBirthStr, this.dob, addressStr, this.address);
     }
+
 }

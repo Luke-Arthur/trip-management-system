@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Admin extends Employee{
 
     private String position;
+    private final String employeeType = "Admin";
 
     public Admin() {
         super();
@@ -22,8 +23,6 @@ public class Admin extends Employee{
             this.position = input.next();
         } catch (Exception e) {
             System.out.println("Error: " + e);
-        } finally {
-            input.nextLine();
         }
     }
 
@@ -35,7 +34,7 @@ public class Admin extends Employee{
 
     @Override
     public String toString() {
-        return super.toString() + String.format(" Position: %s%n", this.position);
+        return  String.format("%s %s%s", employeeType,super.toString(), this.position);
     }
 
 

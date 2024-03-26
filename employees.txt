@@ -10,7 +10,7 @@ A, 9, John Lucas, 12-16-1966, 20 Huxley St. Horsley NSW 2530, SUPPORT
 A, 10, John Fox, 10-15-1975, 18 Victoria St. Hurstville NSW 2456, DIRECTOR
 D, 11, Adam Fox, 08-10-1974, 45 Victoria St. Hurstville NSW 2456, 30005, BUSY
 D, 12, Phillip Cox, 12-12-1985, 5 The Avenue Rockdale NSW 2300, 40002, BUSY
-D, 13, Andrew K Smith, 04-04-1969, 42 Bambaramba Ave. Pennant Hills NSW 2556, 20045,AVAILABLE
+D, 13, Andrew K Smith, 04-04-1969, 42 Bambaramba Ave. Pennant Hills NSW 2556, 20045, AVAILABLE
 A, 14, Andrew R Smith, 04-01-1992, 67 King Cr. Hurstville NSW 2456, CEO
 A, 15, Michael Potter, 04-01-1995, 568 Bong Bong St. Horsley NSW 2530, SUPPORT
 D, 16, Harry Potter, 04-01-1987, 568 Bong Bong St. Horsley NSW 2530, 20055, AVAILABLE
