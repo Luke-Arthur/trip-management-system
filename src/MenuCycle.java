@@ -83,8 +83,8 @@ public class MenuCycle {
 
                     case 10:
                         employeeUtility.writeEmployeeData(employees);
-                        //truckUtility.writeTruckData(trucks);
-                       // tripUtility.writeTripData(trips);
+                        truckUtility.writeTruckData(trucks);
+                        tripUtility.writeTripData(trips);
                         System.out.println("Data saved.");
                         break;
 

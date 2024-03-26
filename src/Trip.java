@@ -76,13 +76,13 @@ public class Trip implements MyFileIO {
 followed by a total number of trip legs and 1 or more trip leg records accordingly.*/
     @Override
     public void outputData(Formatter format) {
-        String result = String.format("%d, %d, %s, %s, %d%n", tripNumber, License, rego, tripDate, legs.size());
+        String result = String.format("%d, %d, %s, %s %n%d", tripNumber, License, rego, tripDate, legs.size());
         //for each loop iterates the array list and returns a trip leg
+        format.format("%s\n", result);
         for(TripLeg trips: legs) {
-            result += trips;
+           trips.outputData(format);
         }
 
-        format.format("%s\n", result);
     }
 
     //Trip number: 1, license: 10001, Rego: PKR768, Trip date: 01-12-2021

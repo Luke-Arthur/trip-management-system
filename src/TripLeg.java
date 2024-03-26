@@ -44,7 +44,7 @@ public class TripLeg implements MyFileIO{
 
     @Override
     public void outputData(Formatter output) {
-        output.format("%d %s %s", this.legNumber, this.departure, this.destination);
+        output.format("%d, %s, %s%n", this.legNumber, this.departure, this.destination);
 
     }
 
