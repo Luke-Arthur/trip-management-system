@@ -5,11 +5,15 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class LoadEmplyee {
+public class EmployeeUtility {
+    Employee anEmployee;
+    public EmployeeUtility() {
+        loadEmployeeData(new ArrayList<>());
+    }
+
 
     //load employees from file
     public void loadEmployeeData(ArrayList<Employee> employees) {
-        Employee anEmployee = null;
 
         String fName = "Employees.txt";
         Path pathway = Paths.get(fName);
@@ -53,6 +57,15 @@ public class LoadEmplyee {
     }
 
 
+    public void findEmployee(ArrayList<Employee> employees, int eNumber) {
+        for(Employee employee : employees) {
+            if(employee.getENumber() == eNumber) {
+                System.out.println(employee);
+                return;
+            }
+        }
+        System.out.println("Employee " + eNumber + " does not exist");
+    }
 
 
 }

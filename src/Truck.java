@@ -33,15 +33,21 @@ public class Truck implements MyFileIO {
     }
 
 
+    // ====================================== getters and setters ==============================
+
+    public String getRego() {
+        return rego;
+    }
+
     // ============================== implementation of MyFileIO interface ==============================
 
     @Override
     public void inputData(Scanner input) {
         try {
-            rego = input.nextLine();
+            rego = input.next();
             capacity = input.nextDouble();
             weight = input.nextDouble();
-            status = input.nextLine();
+            status = input.next();
         }
         catch (InputMismatchException exception) {
             System.out.println("Wrong input data type. " + exception);

@@ -37,23 +37,29 @@ public class TripManagement {
         tripMan = new TripManagement();
         MenuCycle menu = new MenuCycle();
         tripMan.loadEmployees();
-        menu.cycle(tripMan.sc, new LoadEmplyee(), tripMan.employees);
+        tripMan.loadTrucks();
+        tripMan.loadTrips();
+        menu.cycle(tripMan.sc,new EmployeeUtility(), tripMan.employees, new TruckUtility(), tripMan.trucks, new TripUtility(), tripMan.trips);
     }
 
 
 
     public void loadEmployees() {
         //load employees from file
-        LoadEmplyee loadEmp = new LoadEmplyee();
+        EmployeeUtility loadEmp = new EmployeeUtility();
         loadEmp.loadEmployeeData(employees);
     }
 
     public void loadTrucks() {
         //load trucks from file
+        TruckUtility truckUtility = new TruckUtility();
+        truckUtility.loadTruckData(trucks);
     }
 
     public void loadTrips() {
         //load trips from file
+        TripUtility tripUtility = new TripUtility();
+        tripUtility.loadTripData(trips);
     }
 
 

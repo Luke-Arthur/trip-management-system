@@ -4,92 +4,100 @@ import java.util.Scanner;
 public class MenuCycle {
 
     public void menu() {
-        System.out.println("1. Add employee");
-        System.out.println("2. Add vehicle");
-        System.out.println("3. Add trip");
-        System.out.println("4. Assign vehicle to trip");
-        System.out.println("5. Display all employees");
-        System.out.println("6. Display all vehicles");
-        System.out.println("7. Display all trips");
-        System.out.println("8. Display all trips for a specific employee");
-        System.out.println("9. Display all trips for a specific vehicle");
-        System.out.println("10. Display all trips for a specific date");
-        System.out.println("0. Exit");
+        String menu = """
+                  1. Display all employees.
+                  2. Display all trucks.
+                  3. Display all trips.
+                  4. Find an employee.
+                  5. Find a truck.
+                  6. Find a trip.
+                  7. Add a new employee.
+                  8. Add a new truck.
+                  9. Add a new trip.
+                  10. Save all data into files.
+                  0. Exit.\s
+                """;
+        System.out.print(menu);
     }
 
     //the menu that loops until the user inputs Zero
-    public void cycle(Scanner sc, LoadEmplyee loadEmp,ArrayList<Employee> employees) {
-        int choice;
-
-        do{
+    public void cycle(Scanner sc, EmployeeUtility loadEmp, ArrayList<Employee> employees, TruckUtility truckUtility, ArrayList<Truck> trucks, TripUtility tripUtility, ArrayList<Trip> trips) {
             menu();
             System.out.print("Input a choice (0-10): ");
-            choice = sc.nextInt();
-            switch(choice) {
+            int choice = sc.nextInt();
+            do {
+                switch (choice) {
 
-                case 1:
-                    loadEmp.printEmployeeData(employees);
-                    break;
+                    case 1:
+                        loadEmp.printEmployeeData(employees);
+                        break;
 
-                case 2:
-                   /* sysMan.menu2();
-                    break;
-*/
+                    case 2:
+                        truckUtility.printTruckData(trucks);
+                        break;
+                    case 3:
+                        tripUtility.printTripData(trips);
+                        break;
 
-                case 3:
-                   /* sysMan.menu3();
-                    break;*/
-
-
-
-                case 4:
-                    /*sysMan.menu4();
-                    break;*/
-
-
-                case 5:
-                  /*  sysMan.menu5();
-                    break;*/
+                    case 4:
+                        System.out.print("Employee number: ");
+                        int eNumber = sc.nextInt();
+                        loadEmp.findEmployee(employees, eNumber);
+                        break;
 
 
-                case 6:
-                   /* sysMan.menu6();
-                    break;*/
+                    case 5:
+                        System.out.print("Truck rego: ");
+                        String rego = sc.next();
+                        truckUtility.findTruck(trucks, rego);
+                        break;
 
 
-                case 7:
-                   /* sysMan.menu7();
-                    break;
-*/
-
-                case 8:
-                    /*sysMan.menu8();
-                    break;
-
-*/
-                case 9:
-                    /*sysMan.menu9();
-                    break;*/
+                    case 6:
+                        System.out.print("Trip number: ");
+                        int tripNumber = sc.nextInt();
+                        tripUtility.findTrip(trips, tripNumber);
+                        break;
 
 
-                case 10:
-                    /*sysMan.menu9();
-                    break;*/
+                    case 7:
+                       /* sysMan.menu7();
+                        break;
+    */
+
+                    case 8:
+                        /*sysMan.menu8();
+                        break;
+
+    */
+                    case 9:
+                        /*sysMan.menu9();
+                        break;*/
 
 
-                case 0:
-                    System.out.println("Bye-bye");
-                    break;
+                    case 10:
+                        /*sysMan.menu9();
+                        break;*/
 
 
-                default:
-                    System.out.println("Input 0-10 for the selections.");
-                    break;
-            }
-
-        }while(choice !=0);
-    }
+                    case 0:
+                        System.out.println("Bye-bye");
+                        break;
 
 
+                    default:
+                        System.out.println("Input 0-10 for the selections.");
+                        break;
+                }
+                if(choice != 0) {
+                    System.out.println();
+                    menu();
+                    System.out.print("Input a choice (0-10): ");
+                    choice = sc.nextInt();
+
+                }
+            } while (choice != 0);
+
+        }
 
 }

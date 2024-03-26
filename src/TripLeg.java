@@ -38,8 +38,6 @@ public class TripLeg implements MyFileIO{
             System.out.println("Wrong input type. " + e);
         } catch (Exception e) {
             System.out.println("Error: " + e);
-        } finally {
-            input.nextLine();
         }
 
     }

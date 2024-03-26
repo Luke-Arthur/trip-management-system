@@ -68,7 +68,7 @@ public class Trip implements MyFileIO {
         }
         catch (Exception e) {
             System.out.println("Wrong input data type. " + e);
-            input.next(); //Jump over the string that caused the exception to avoid infinite loop
+            e.printStackTrace();
         }
     }
 
@@ -92,7 +92,7 @@ followed by a total number of trip legs and 1 or more trip leg records according
         for(TripLeg trips: legs) {
             result += trips;
         }
-        System.out.println();
+        //System.out.println();
         return result;
 
     }
