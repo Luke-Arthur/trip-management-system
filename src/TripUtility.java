@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.Scanner;
 
 public class TripUtility {
@@ -40,7 +41,7 @@ public class TripUtility {
         for (Trip trip : trips) {
             System.out.print(trip);
             i++;
-            // remove the last line break
+            // removing the last line break
             if (i < trips.size()) {
                 System.out.println();
             }
@@ -59,5 +60,55 @@ public class TripUtility {
     }
 
 
+    public void addTrip(ArrayList<Trip> trips, int tNum) {
 
-}
+        for (Trip trip : trips) {
+            if (trip.getTripNumber()==tNum) {
+                System.out.printf("Trip %s already exists\n", tNum);
+                return;
+            }
+        }
+
+        ArrayList<TripLeg> trplg = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("License: ");
+        int license = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Rego: ");
+        String rego = sc.nextLine();
+        System.out.print("Trip Date (dd-mm-yyyy): ");
+        String tripDate = sc.nextLine();
+        System.out.print("Total legs: ");
+        int numLegs = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < numLegs; i++) {
+            TripLeg leg = new TripLeg();
+            System.out.print("Leg Number: ");
+            int legNumber = sc.nextInt();
+            sc.nextLine();
+            System.out.print("Departure: ");
+            String departure = sc.next();
+            System.out.print("Destination: ");
+            String destination = sc.next();
+            trplg.add(new TripLeg(legNumber, departure, destination));
+        }
+        Trip newTrip = new Trip(tNum, license, rego, tripDate, trplg);
+        trips.add(newTrip);
+    }
+
+    public void writeTripData(ArrayList<Trip> trips) {
+        String fName = "trips.txt";
+        Path pathway = Paths.get(fName);
+        try {
+            Formatter output = new Formatter(fName);
+            for (Trip trip : trips) {
+                trip.outputData(output);
+            }
+            output.close();
+        }
+        catch (IOException errorCatch) {
+            System.out.println("IO exception error");
+        }
+    }
+
+}//end of class

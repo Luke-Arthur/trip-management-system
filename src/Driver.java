@@ -5,7 +5,7 @@ public class Driver extends Employee {
 
     private int license;
     private String status;
-    private final String employeeType = "Driver";
+    private String employeeType = "Driver";
 
 
     public Driver() {
@@ -35,16 +35,19 @@ public class Driver extends Employee {
 
     @Override
     public void outputData(Formatter format) {
+        employeeType = "D";
+        format.format("%s, ", employeeType);
         super.outputData(format);
-        format.format("%d, %s", this.license, this.status);
+        format.format("%d, %s%n", this.license, this.status);
     }
     // TODO: make the Driver and admin toString methods show a different message "driver" or "admin" for the type of employee
 
 
     @Override
     public String toString() {
-
-        return String.format("%s %s,%d,%s", employeeType, super.toString(), license, status);
+        String status = "Status: ";
+        String license = "License: ";
+        return String.format("%s %s, %s%d, %s%s", employeeType, super.toString(), license, this.license, status, this.status);
     }
 
 

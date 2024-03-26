@@ -21,7 +21,7 @@ public class MenuCycle {
     }
 
     //the menu that loops until the user inputs Zero
-    public void cycle(Scanner sc, EmployeeUtility loadEmp, ArrayList<Employee> employees, TruckUtility truckUtility, ArrayList<Truck> trucks, TripUtility tripUtility, ArrayList<Trip> trips) {
+    public void cycle(Scanner sc, EmployeeUtility employeeUtility, ArrayList<Employee> employees, TruckUtility truckUtility, ArrayList<Truck> trucks, TripUtility tripUtility, ArrayList<Trip> trips) {
             menu();
             System.out.print("Input a choice (0-10): ");
             int choice = sc.nextInt();
@@ -29,7 +29,7 @@ public class MenuCycle {
                 switch (choice) {
 
                     case 1:
-                        loadEmp.printEmployeeData(employees);
+                        employeeUtility.printEmployeeData(employees);
                         break;
 
                     case 2:
@@ -42,7 +42,7 @@ public class MenuCycle {
                     case 4:
                         System.out.print("Employee number: ");
                         int eNumber = sc.nextInt();
-                        loadEmp.findEmployee(employees, eNumber);
+                        employeeUtility.findEmployee(employees, eNumber);
                         break;
 
 
@@ -61,23 +61,32 @@ public class MenuCycle {
 
 
                     case 7:
-                       /* sysMan.menu7();
+                        System.out.print("Employee number: ");
+                        int eNum = sc.nextInt();
+                        employeeUtility.addEmployee(employees, eNum);
                         break;
-    */
+
 
                     case 8:
-                        /*sysMan.menu8();
+                        System.out.print("Truck rego: ");
+                        String reg = sc.next();
+                        truckUtility.addTruck(trucks, reg);
                         break;
 
-    */
+
                     case 9:
-                        /*sysMan.menu9();
-                        break;*/
+                        System.out.print("Trip number: ");
+                        int tNum = sc.nextInt();
+                        tripUtility.addTrip(trips, tNum);
+                        break;
 
 
                     case 10:
-                        /*sysMan.menu9();
-                        break;*/
+                        employeeUtility.writeEmployeeData(employees);
+                        //truckUtility.writeTruckData(trucks);
+                       // tripUtility.writeTripData(trips);
+                        System.out.println("Data saved.");
+                        break;
 
 
                     case 0:

@@ -17,10 +17,6 @@ public class Employee implements MyFileIO, Serializable{
     private String name;
     private String dob;
     private String address;
-    String employeeNumberStr = "Employee number";
-    String employeeNameStr = "Employee name";
-    String dateOfBirthStr = "Date of birth";
-    String addressStr = "Address";
 
     public Employee() {
         this.eNumber = 0;
@@ -68,7 +64,11 @@ public class Employee implements MyFileIO, Serializable{
 
     @Override
     public String toString() {
-        return String.format("%s:%d,%s:%s,%s:%s,%s:%s,", employeeNumberStr, this.eNumber, employeeNameStr, this.name, dateOfBirthStr, this.dob, addressStr, this.address);
+        String employeeNumberStr = "Employee number";
+        String employeeNameStr = "Employee name";
+        String dateOfBirthStr = "Date of birth";
+        String addressStr = "Address";
+        return String.format("%s: %d, %s: %s, %s: %s, %s: %s", employeeNumberStr, this.eNumber, employeeNameStr, this.name, dateOfBirthStr, this.dob, addressStr, this.address);
     }
 
 

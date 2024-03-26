@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.Scanner;
 
 public class EmployeeUtility {
@@ -68,4 +69,56 @@ public class EmployeeUtility {
     }
 
 
-}
+    public void addEmployee(ArrayList<Employee> employees, int eNumber) {
+
+        for(Employee employee : employees) {
+            if (employee.getENumber() == eNumber) {
+                System.out.println("The employee " + eNumber + " exists.");
+                return;
+            }
+        }
+
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Employee name: ");
+            String name = sc.nextLine();
+            System.out.print("Date of birth (dd-mm-yyyy): ");
+            String dob = sc.nextLine();
+            System.out.print("Address: ");
+            String address = sc.nextLine();
+            System.out.print("Admin or Driver (A or D): ");
+            String cat = sc.nextLine();
+
+
+
+        if(cat.equals("D")) {
+            System.out.print("License: ");
+            int license = sc.nextInt();
+            sc.nextLine();
+            System.out.print("Status: ");
+            String status = sc.nextLine();
+            anEmployee = new Driver(eNumber, name, dob, address, license, status);
+        }
+        else if(cat.equals("A")) {
+            System.out.print("Position: ");
+            String positon = sc.nextLine();
+            anEmployee = new Admin(eNumber, name, dob, address, positon);
+        }
+        employees.add(anEmployee);
+
+    }
+
+    public void writeEmployeeData(ArrayList<Employee> employees) {
+        String fName = "employees.txt";
+        Path pathway = Paths.get(fName);
+        try {
+            Formatter output = new Formatter(fName);
+            for (Employee employee : employees) {
+                employee.outputData(output);
+            }
+            output.close();
+        } catch (IOException errorCatch) {
+            System.out.println("IO exception error");
+        }
+    }
+
+}//end of class
