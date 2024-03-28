@@ -60,7 +60,7 @@ public class TripUtility {
     }
 
 
-    public void addTrip(ArrayList<Trip> trips, int tNum) {
+    public void addTrip(ArrayList<Trip> trips, int tNum, Validation validation) {
 
         for (Trip trip : trips) {
             if (trip.getTripNumber()==tNum) {
@@ -71,25 +71,26 @@ public class TripUtility {
 
         ArrayList<TripLeg> trplg = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        System.out.print("License: ");
-        int license = sc.nextInt();
+        int license = validation.getIntInput(sc, "License: ");
         sc.nextLine();
         System.out.print("Rego: ");
-        String rego = sc.nextLine();
-        System.out.print("Trip Date (dd-mm-yyyy): ");
-        String tripDate = sc.nextLine();
-        System.out.print("Total legs: ");
-        int numLegs = sc.nextInt();
+        String rego = validation.getMixedStringInput(sc, "Rego: ");
+
+        String tripDate = validation.readDate(sc, "Trip Date (dd-mm-yyyy): ");
+        int numLegs = validation.getIntInput(sc, "Total legs: ");
         sc.nextLine();
         for (int i = 0; i < numLegs; i++) {
-            TripLeg leg = new TripLeg();
-            System.out.print("Leg Number: ");
-            int legNumber = sc.nextInt();
+            int legNumber = validation.getIntInput(sc, "Leg Number: ");
+            int legidx = tripLegExists(trplg, legNumber);
+            while (legidx != -1) {
+                legNumber = validation.getIntInput(sc, "Leg Number: ");
+                legidx = tripLegExists(trplg, legNumber);
+            }
             sc.nextLine();
             System.out.print("Departure: ");
-            String departure = sc.next();
+            String departure = validation.getJustStringInput(sc, "Departure: ", "Invalid input. Please enter a valid departure.");
             System.out.print("Destination: ");
-            String destination = sc.next();
+            String destination = validation.getJustStringInput(sc, "Destination: ", "Invalid input. Please enter a valid destination.");
             trplg.add(new TripLeg(legNumber, departure, destination));
         }
         Trip newTrip = new Trip(tNum, license, rego, tripDate, trplg);
@@ -98,7 +99,6 @@ public class TripUtility {
 
     public void writeTripData(ArrayList<Trip> trips) {
         String fName = "trips.txt";
-        Path pathway = Paths.get(fName);
         try {
             Formatter output = new Formatter(fName);
             for (Trip trip : trips) {
@@ -110,5 +110,16 @@ public class TripUtility {
             System.out.println("IO exception error");
         }
     }
+
+    public int tripLegExists(ArrayList<TripLeg> tripLegs, int legNumber) {
+        for (TripLeg tripLeg : tripLegs) {
+            if (tripLeg.getLegNumber() == legNumber) {
+                System.out.printf("Leg %d already exists.%n", legNumber);
+                return tripLegs.indexOf(tripLeg);
+            }
+        }
+        return -1;
+    }
+
 
 }//end of class

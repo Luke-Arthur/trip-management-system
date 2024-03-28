@@ -55,7 +55,7 @@ public class TruckUtility {
     }
 
 
-    public void addTruck(ArrayList<Truck> trucks, String reo) {
+    public void addTruck(ArrayList<Truck> trucks, String reo, Validation validation) {
         for (Truck truck : trucks) {
             if (truck.getRego().equals(reo)) {
                 System.out.printf("Truck %s already exists\n", reo);
@@ -63,22 +63,17 @@ public class TruckUtility {
             }
         }
 
-
         Scanner sc = new Scanner(System.in);
-    /*Truck rego: ABC001
-    Capacity: 1234.5
-    Weight: 234.5
-    Status: AVAILABLE*/
 
-        System.out.print("Capacity: ");
-        double capacity = sc.nextDouble();
+        String capacityPrompt = "Capacity: ";
+        double capacity = validation.getDoubleInput(sc, capacityPrompt);
+        String weightPrompt = "Weight: ";
+        double weight = validation.getDoubleInput(sc, weightPrompt);
         sc.nextLine();
-        System.out.print("Weight: ");
-        double weight = sc.nextDouble();
-        sc.nextLine();
-        System.out.print("Status: ");
-        String status = sc.nextLine();
-
+        String statusPrompt = "Status: ";
+        System.out.print(statusPrompt);
+        String status = validation.getJustStringInput(sc, statusPrompt, "Invalid input. Please enter a valid status.");
+        status = status.toUpperCase();
         Truck newTruck = new Truck(reo, capacity, weight, status);
 
         trucks.add(newTruck);
@@ -87,7 +82,6 @@ public class TruckUtility {
 
     public void writeTruckData(ArrayList<Truck> trucks) {
         String fName = "trucks.txt";
-        Path pathway = Paths.get(fName);
         try {
             Formatter output = new Formatter(fName);
             for (Truck truck : trucks) {

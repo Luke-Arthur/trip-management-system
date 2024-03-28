@@ -69,7 +69,7 @@ public class EmployeeUtility {
     }
 
 
-    public void addEmployee(ArrayList<Employee> employees, int eNumber) {
+    public void addEmployee(ArrayList<Employee> employees, int eNumber, Validation validation) {
 
         for(Employee employee : employees) {
             if (employee.getENumber() == eNumber) {
@@ -79,28 +79,37 @@ public class EmployeeUtility {
         }
 
             Scanner sc = new Scanner(System.in);
-            System.out.print("Employee name: ");
-            String name = sc.nextLine();
-            System.out.print("Date of birth (dd-mm-yyyy): ");
-            String dob = sc.nextLine();
-            System.out.print("Address: ");
-            String address = sc.nextLine();
-            System.out.print("Admin or Driver (A or D): ");
-            String cat = sc.nextLine();
+            String eNamePrompt = "Employee name: ";
+            System.out.print(eNamePrompt);
+            String name = validation.getJustStringInput(sc, eNamePrompt, "Invalid input. Please enter a valid name.");
+            name = validation.capitaliseFirstLetter(name);
+            String dobPrompt = "Date of birth (dd-mm-yyyy): ";
+            String dob = validation.readDate(sc, dobPrompt);
+            sc.nextLine();
+            String addressPrompt = "Address: ";
+            System.out.print(addressPrompt);
+            String address = validation.getMixedStringInput(sc, addressPrompt);
+            String catPrompt = "Admin or Driver (A or D): ";
+            System.out.print(catPrompt);
+            String cat = validation.employeeTypeInput(sc, catPrompt, "Invalid input. Please enter A or D.");
 
 
 
         if(cat.equals("D")) {
-            System.out.print("License: ");
-            int license = sc.nextInt();
+            String licensePrompt = "License: ";
+            int license = validation.getIntInput(sc, licensePrompt);
             sc.nextLine();
-            System.out.print("Status: ");
-            String status = sc.nextLine();
+            String statusPrompt = "Status: ";
+            System.out.print(statusPrompt);
+            String status = validation.getJustStringInput(sc, statusPrompt, "Invalid input. Please enter a valid status.");
+            status = status.toUpperCase();
             anEmployee = new Driver(eNumber, name, dob, address, license, status);
         }
         else if(cat.equals("A")) {
-            System.out.print("Position: ");
-            String positon = sc.nextLine();
+            String positionPrompt = "Position: ";
+            System.out.print(positionPrompt);
+            String positon = validation.getJustStringInput(sc, positionPrompt, "Invalid input. Please enter a valid position.");
+            positon = positon.toUpperCase();
             anEmployee = new Admin(eNumber, name, dob, address, positon);
         }
         employees.add(anEmployee);
@@ -109,7 +118,6 @@ public class EmployeeUtility {
 
     public void writeEmployeeData(ArrayList<Employee> employees) {
         String fName = "employees.txt";
-        Path pathway = Paths.get(fName);
         try {
             Formatter output = new Formatter(fName);
             for (Employee employee : employees) {

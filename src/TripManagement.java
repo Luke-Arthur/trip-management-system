@@ -23,9 +23,9 @@ public class TripManagement {
 
 
     public TripManagement() {
-        this.employees  = new ArrayList<Employee>();
-        this.trucks = new ArrayList<Truck>();
-        this.trips = new ArrayList<Trip>();
+        this.employees  = new ArrayList<>();
+        this.trucks = new ArrayList<>();
+        this.trips = new ArrayList<>();
         this.tNum = 0;
         this.eNumb = 0;
         this.rego = "";

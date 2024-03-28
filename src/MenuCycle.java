@@ -23,9 +23,19 @@ public class MenuCycle {
     //the menu that loops until the user inputs Zero
     public void cycle(Scanner sc, EmployeeUtility employeeUtility, ArrayList<Employee> employees, TruckUtility truckUtility, ArrayList<Truck> trucks, TripUtility tripUtility, ArrayList<Trip> trips) {
             menu();
-            System.out.print("Input a choice (0-10): ");
-            int choice = sc.nextInt();
+            String prompt = "Input a choice (0-10): ";
+            Validation validation = new Validation();
+            int choice = validation.getExitIntInput(sc, prompt);
+            sc.nextLine();
+
             do {
+                if(choice != 0) {
+                    System.out.println();
+                    menu();
+                    String prompt10 = "Input a choice (0-10): ";
+                    choice = validation.getExitIntInput(sc, prompt10);
+                    sc.nextLine();
+                }
                 switch (choice) {
 
                     case 1:
@@ -40,44 +50,48 @@ public class MenuCycle {
                         break;
 
                     case 4:
-                        System.out.print("Employee number: ");
-                        int eNumber = sc.nextInt();
+                        String prompt4 = "Employee number: ";
+                        int eNumber = validation.getIntInput(sc, prompt4);
                         employeeUtility.findEmployee(employees, eNumber);
                         break;
 
 
                     case 5:
-                        System.out.print("Truck rego: ");
-                        String rego = sc.next();
+                        String prompt5 ="Truck rego: ";
+                        System.out.print(prompt5);
+                        String rego = validation.getMixedStringInput(sc, prompt5);
                         truckUtility.findTruck(trucks, rego);
                         break;
 
 
                     case 6:
-                        System.out.print("Trip number: ");
-                        int tripNumber = sc.nextInt();
+                        String prompt6 = "Trip number: ";
+                        int tripNumber = validation.getIntInput(sc, prompt6);
                         tripUtility.findTrip(trips, tripNumber);
                         break;
 
 
                     case 7:
-                        System.out.print("Employee number: ");
-                        int eNum = sc.nextInt();
-                        employeeUtility.addEmployee(employees, eNum);
+                        String prompt7 = "Employee number: ";
+                        int eNum = validation.getIntInput(sc, prompt7);
+                        sc.nextLine();
+                        employeeUtility.addEmployee(employees, eNum, validation);
                         break;
 
 
                     case 8:
-                        System.out.print("Truck rego: ");
-                        String reg = sc.next();
-                        truckUtility.addTruck(trucks, reg);
+                        String prompt8 = "Truck rego: ";
+                        System.out.print(prompt8);
+                        String reg = validation.getMixedStringInput(sc, prompt8);
+                        truckUtility.addTruck(trucks, reg, validation);
                         break;
 
 
                     case 9:
-                        System.out.print("Trip number: ");
-                        int tNum = sc.nextInt();
-                        tripUtility.addTrip(trips, tNum);
+                        String prompt9 = "Trip number: ";
+                        int tNum = validation.getIntInput(sc, prompt9);
+                        sc.nextLine();
+                        tripUtility.addTrip(trips, tNum, validation);
                         break;
 
 
@@ -93,18 +107,13 @@ public class MenuCycle {
                         System.out.println("Bye-bye");
                         break;
 
-
                     default:
                         System.out.println("Input 0-10 for the selections.");
                         break;
                 }
-                if(choice != 0) {
-                    System.out.println();
-                    menu();
-                    System.out.print("Input a choice (0-10): ");
-                    choice = sc.nextInt();
 
-                }
+
+
             } while (choice != 0);
 
         }

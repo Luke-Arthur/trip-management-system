@@ -52,4 +52,8 @@ public class TripLeg implements MyFileIO{
     public String toString() {
         return String.format("Leg number: %d, Departure: %s, Destination: %s%n", this.legNumber, this.departure, this.destination);
     }
+
+    public int getLegNumber() {
+        return legNumber;
+    }
 }
