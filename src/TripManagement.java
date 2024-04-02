@@ -11,12 +11,13 @@ import java.util.Scanner;
 
 public class TripManagement {
 
-
     private ArrayList<Employee> employees;
     private  ArrayList<Truck> trucks;
     private  ArrayList<Trip> trips;
     private Scanner sc = new Scanner(System.in);
     private static TripManagement tripMan;
+
+    //TODO: check the UML
     private int tNum;
     private int eNumb;
     private String rego;
@@ -61,8 +62,5 @@ public class TripManagement {
         TripUtility tripUtility = new TripUtility();
         tripUtility.loadTripData(trips);
     }
-
-
-
 
 }// end of class
