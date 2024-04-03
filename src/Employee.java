@@ -72,9 +72,15 @@ public class Employee implements MyFileIO, Serializable{
     }
 
 
-}
+} // end of Employee class
 
-
+/*------------------------------------------------------
+My name: Luke Moorhouse
+My student number: 7603599
+My course code: CSIT213
+My email address: lm678@uowmail.edu.au
+Assignment number: 2
+-------------------------------------------------------*/
 
 class Admin extends Employee{
 
@@ -116,8 +122,16 @@ class Admin extends Employee{
     }
 
 
-}
+} // end of Admin class
 
+
+/*------------------------------------------------------
+My name: Luke Moorhouse
+My student number: 7603599
+My course code: CSIT213
+My email address: lm678@uowmail.edu.au
+Assignment number: 2
+-------------------------------------------------------*/
 
 
 class Driver extends Employee {
@@ -170,6 +184,6 @@ class Driver extends Employee {
     }
 
 
-}
+} // end of Driver class
 
 

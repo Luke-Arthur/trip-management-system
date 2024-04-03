@@ -1,3 +1,11 @@
+/*------------------------------------------------------
+My name: Luke Moorhouse
+My student number: 7603599
+My course code: CSIT213
+My email address: lm678@uowmail.edu.au
+Assignment number: 2
+-------------------------------------------------------*/
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
