@@ -18,5 +18,3 @@ D, 17, James Bond, 02-14-1989, 7 Alan Bond St. Perth WA 6000, 20065, AVAILABLE
 D, 18, Paris Hilton, 05-01-1977, 1 Hilton St. Melbourne VIC 3000, 10305, AVAILABLE
 A, 19, Lady Gaga, 06-01-1992, 3 Pork st. Hobart TAS 7000, SUPPORT
 D, 20, Robin Hood, 05-23-1999, 6 Nottingham Pl. Sydney NSW 2000, 10345, AVAILABLE
-D, 21, James Bond, 10-03-1992, 123 Princess Street Wollongong NSW 2500, 123456, AVAILABLE
-A, 22, Albert Einstein, 08-02-1990, 20 Physicist road Wollongong NSW 2500, SUPPORT

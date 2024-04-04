@@ -45,15 +45,25 @@ public class Validation {
 
     // Method to validate a mixed number and string input
     public String getMixedStringInput(Scanner scan, String prompt) {
-        //System.out.print(prompt);
 
         // Loop until a valid string is entered, rejects special characters or empty strings
         String input;
-        for (input = scan.nextLine().toUpperCase(); !input.matches("^[a-zA-Z0-9\\s]*$") || input.isEmpty(); input = scan.nextLine().toUpperCase()) {
-            System.out.println("Invalid input. Please enter a valid truck registration number.");
-            System.out.print(prompt);
-        }
+        input = scan.nextLine();
+        input = input.toUpperCase();
 
+        // Loop indefinitely until a break statement is executed
+        while (true) {
+            // Check if the input matches the pattern for a mixed number and string input and is not empty
+            if (input.matches("^[a-zA-Z0-9\\s]*$") && !input.isEmpty()) {
+                break;
+            } else {
+                // Display an error message and prompt the user to re-enter the input
+                System.out.println("Invalid input. Please enter a valid truck registration number.");
+                System.out.print(prompt);
+                input = scan.nextLine().toUpperCase();
+            }
+        }
+        // Return the validated input
         return input;
     }
 
@@ -86,7 +96,7 @@ public class Validation {
 
         String input;
 
-        // Loop until a valid string is entered, rejects special characters or empty strings
+        //An unconventional Loop to test if it works - seems it does - until a valid string is entered, rejects special characters or empty strings
         for (input = scan.nextLine(); !input.matches("^[a-zA-Z\\s]*$") || input.isEmpty(); input = scan.nextLine()) {
             System.out.println(errorMessage);
             System.out.print(prompt);

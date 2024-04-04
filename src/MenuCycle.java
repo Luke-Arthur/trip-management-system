@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class MenuCycle {
 
-
     // ====================================== MenuCycle methods ==============================
 
     //the menu that displays the options
@@ -97,7 +96,7 @@ public class MenuCycle {
                         String prompt7 = "Employee number: ";
                         int eNum = validation.getIntInput(sc, prompt7);
                         sc.nextLine();
-                        employeeUtility.addEmployee(employees, eNum, validation);
+                        employeeUtility.addEmployee(sc, employees, eNum, validation);
                         break;
 
                     // case 8: add a new truck
@@ -105,7 +104,7 @@ public class MenuCycle {
                         String prompt8 = "Truck rego: ";
                         System.out.print(prompt8);
                         String reg = validation.getMixedStringInput(sc, prompt8);
-                        truckUtility.addTruck(trucks, reg, validation);
+                        truckUtility.addTruck(sc, trucks, reg, validation);
                         break;
 
                     // case 9: add a new trip
@@ -113,7 +112,7 @@ public class MenuCycle {
                         String prompt9 = "Trip number: ";
                         int tNum = validation.getIntInput(sc, prompt9);
                         sc.nextLine();
-                        tripUtility.addTrip(trips, tNum, validation);
+                        tripUtility.addTrip(sc, trips, tNum, validation);
                         break;
 
                     // case 10: save all data into files

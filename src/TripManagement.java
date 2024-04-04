@@ -40,6 +40,12 @@ public class TripManagement {
     }
 
     // ====================================== Driver ===================================
+    /*
+     * The main method of the TripManagement class is the entry point of the program. It creates a new TripManagement object
+     * and loads employees, trucks, and trips from files. It then initiates the menu cycle, which allows the user to interact
+     * with the system and perform various operations such as viewing, finding, adding, and saving data.
+     * Finally, it closes the scanner object to release system resources.
+     */
     public static void main(String[] args) {
         TripManagement tripMan = new TripManagement();
         MenuCycle menu = new MenuCycle();
@@ -47,19 +53,24 @@ public class TripManagement {
         tripMan.loadTrucks();
         tripMan.loadTrips();
         menu.cycle(tripMan.sc, tripMan.employeeUtility, tripMan.employees, tripMan.truckUtility, tripMan.trucks, tripMan.tripUtility, tripMan.trips);
+        tripMan.sc.close();
     }
 
     // ====================================== Load data methods ==============================
+
+    // Load employees from file
     public void loadEmployees() {
         //load employees from file
         employeeUtility.loadEmployeeData(employees);
     }
 
+    // Load trucks from file
     public void loadTrucks() {
         //load trucks from file
         truckUtility.loadTruckData(trucks);
     }
 
+    // Load trips from file
     public void loadTrips() {
         //load trips from file
         tripUtility.loadTripData(trips);

@@ -130,6 +130,15 @@ public class Trip implements MyFileIO {
 } // end of Trip class
 
 
+
+/*------------------------------------------------------
+My name: Luke Moorhouse
+My student number: 7603599
+My course code: CSIT213
+My email address: lm678@uowmail.edu.au
+Assignment number: 2
+-------------------------------------------------------*/
+
 // IAW the assignment spec, the TripLeg class needed to be in the same file as the Trip class.
 class TripLeg implements MyFileIO {
 
@@ -176,7 +185,6 @@ class TripLeg implements MyFileIO {
     @Override
     public void outputData(Formatter output) {
         output.format("%d, %s, %s%n", this.legNumber, this.departure, this.destination);
-
     }
 
     // Method to return a string representation of the trip leg object.

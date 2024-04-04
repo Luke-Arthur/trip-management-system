@@ -6,18 +6,23 @@ My email address: lm678@uowmail.edu.au
 Assignment number: 2
 -------------------------------------------------------*/
 
-import java.io.Serializable;
 import java.util.Formatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Employee implements MyFileIO, Serializable{
+// Base class
+public class Employee implements MyFileIO{
 
+    // ====================================== instance variables ==============================
     private int eNumber;
     private String name;
     private String dob;
     private String address;
 
+
+    // ====================================== constructors ==============================
+
+    // default constructor
     public Employee() {
         this.eNumber = 0;
         this.name = "";
@@ -25,6 +30,7 @@ public class Employee implements MyFileIO, Serializable{
         this.address = "";
     }
 
+    // parameterised constructor
     public Employee(int eNumber, String name, String dob, String address) {
         this.eNumber = eNumber;
         this.name = name;
@@ -42,6 +48,7 @@ public class Employee implements MyFileIO, Serializable{
 
     // ====================================== implementation of MyFileIO interface ==============================
 
+    // input data from the file to the object
     @Override
     public void inputData(Scanner input) {
         try {
@@ -56,12 +63,13 @@ public class Employee implements MyFileIO, Serializable{
         }
     }
 
+    // output data from the object to the file
     @Override
     public void outputData(Formatter format) {
         format.format("%d, %s, %s, %s, ", this.eNumber, this.name, this.dob, this.address);
     }
 
-
+    // return the data in a formatted string for display
     @Override
     public String toString() {
         String employeeNumberStr = "Employee number";
@@ -74,6 +82,11 @@ public class Employee implements MyFileIO, Serializable{
 
 } // end of Employee class
 
+
+
+//==================================================== child classes =====================================================
+
+
 /*------------------------------------------------------
 My name: Luke Moorhouse
 My student number: 7603599
@@ -82,21 +95,30 @@ My email address: lm678@uowmail.edu.au
 Assignment number: 2
 -------------------------------------------------------*/
 
+// child class of Employee
 class Admin extends Employee{
 
+    // ====================================== instance variables ==============================
     private String position;
     private String employeeType = "Admin";
 
+
+    // ====================================== constructors ==============================
+
+    // default constructor
     public Admin() {
         super();
         this.position = "";
     }
 
+    // parameterised constructor
     public Admin(int eNumber, String name, String dob, String address, String position) {
         super(eNumber, name, dob, address);
         this.position = position;
     }
 
+    // ====================================== implementation of MyFileIO interface ==============================
+    // input data from the file to the object
     @Override
     public void inputData(Scanner input) {
         try {
@@ -107,6 +129,7 @@ class Admin extends Employee{
         }
     }
 
+    // output data from the object to the file
     @Override
     public void outputData(Formatter format) {
         employeeType = "A";
@@ -115,6 +138,7 @@ class Admin extends Employee{
         format.format("%s%n", this.position);
     }
 
+    // return the data in a formatted string for display
     @Override
     public String toString() {
         String position = "Position: ";
@@ -125,6 +149,8 @@ class Admin extends Employee{
 } // end of Admin class
 
 
+//=============================================== child classes =====================================================
+
 /*------------------------------------------------------
 My name: Luke Moorhouse
 My student number: 7603599
@@ -133,27 +159,31 @@ My email address: lm678@uowmail.edu.au
 Assignment number: 2
 -------------------------------------------------------*/
 
-
+// child class of Employee
 class Driver extends Employee {
 
+    // ====================================== instance variables ==============================
     private int license;
     private String status;
     private String employeeType = "Driver";
 
-
+    // ====================================== constructors ==============================
+    // default constructor
     public Driver() {
         super();
         this.license = 0;
         this.status = "";
     }
 
+    // parameterised constructor
     public Driver(int eNumber, String name, String dob, String address, int license, String status) {
         super(eNumber, name, dob, address);
         this.license = license;
         this.status = status;
     }
 
-
+    // ====================================== implementation of MyFileIO interface ==============================
+    // input data from the file to the object
     @Override
     public void inputData(Scanner input) {
         try {
@@ -166,6 +196,7 @@ class Driver extends Employee {
         }
     }
 
+    // output data from the object to the file
     @Override
     public void outputData(Formatter format) {
         employeeType = "D";
@@ -173,9 +204,8 @@ class Driver extends Employee {
         super.outputData(format);
         format.format("%d, %s%n", this.license, this.status);
     }
-    // TODO: make the Driver and admin toString methods show a different message "driver" or "admin" for the type of employee
 
-
+    // return the data in a formatted string for display
     @Override
     public String toString() {
         String status = "Status: ";
@@ -183,7 +213,4 @@ class Driver extends Employee {
         return String.format("%s %s, %s%d, %s%s", employeeType, super.toString(), license, this.license, status, this.status);
     }
 
-
 } // end of Driver class
-
-

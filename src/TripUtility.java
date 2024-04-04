@@ -66,6 +66,7 @@ public class TripUtility {
                             trips.add(aTrip);
                         }
                     }
+                    scan.close();
                 }
                 else
                     System.out.printf("File %s does not exist", pathway);
@@ -106,7 +107,7 @@ public class TripUtility {
     }
 
     // Add a trip to the list of trips
-    public void addTrip(ArrayList<Trip> trips, int tNum, Validation validation) {
+    public void addTrip(Scanner sc, ArrayList<Trip> trips, int tNum, Validation validation) {
         // loop through the trips and check if the trip number already exists
         for (Trip trip : trips) {
             if (trip.getTripNumber()==tNum) {
@@ -117,7 +118,6 @@ public class TripUtility {
         // try to add a trip to the list of trips and catch any exceptions
         try {
         ArrayList<TripLeg> trplg = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
         int license = validation.getIntInput(sc, "License: ");
         sc.nextLine();
         System.out.print("Rego: ");

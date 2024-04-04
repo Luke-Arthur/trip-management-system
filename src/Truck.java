@@ -12,12 +12,15 @@ import java.util.Scanner;
 
 public class Truck implements MyFileIO {
 
+    // ====================================== instance variables ==============================
     private String rego;
     private double capacity;
     private double weight;
     private String status;
 
+    // ====================================== constructors ==============================
 
+    // default constructor
     public Truck() {
         this.rego = "";
         this.capacity = 0.0;
@@ -25,6 +28,7 @@ public class Truck implements MyFileIO {
         this.status = "";
     }
 
+    // parameterised constructor
     public Truck(String rego, double capacity, double weight, String status) {
         this.rego = rego;
         this.capacity = capacity;
@@ -41,6 +45,7 @@ public class Truck implements MyFileIO {
 
     // ============================== implementation of MyFileIO interface ==============================
 
+    //input data from the file
     @Override
     public void inputData(Scanner input) {
         try {
@@ -49,9 +54,11 @@ public class Truck implements MyFileIO {
             weight = input.nextDouble();
             status = input.next();
         }
+        //catch exception if the input data type is incorrect
         catch (InputMismatchException exception) {
             System.out.println("Wrong input data type. " + exception);
-            input.next(); //Jump over the string that caused the exception to avoid infinite loop
+            // clear the buffer - stops a loop - found out the hard way
+            input.next();
         }
     }
 
@@ -59,7 +66,6 @@ public class Truck implements MyFileIO {
     @Override
     public void outputData(Formatter output) {
         output.format("%s, %.2f, %.2f, %s%n", rego, capacity, weight, status);
-
     }
 
     //return the data in a formatted string for display
@@ -67,4 +73,5 @@ public class Truck implements MyFileIO {
     public String toString() {
         return String.format( "Rego: %s, Capacity: %.2f, Weight: %.2f, Status: %s", rego, capacity, weight, status);
     }
-}
+
+}// end of class Truck
