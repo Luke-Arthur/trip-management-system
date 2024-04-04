@@ -114,6 +114,7 @@ public class EmployeeUtility {
             String addressPrompt = "Address: ";
             System.out.print(addressPrompt);
             String address = validation.getMixedStringInput(sc, addressPrompt);
+            address = address.toLowerCase();
             String catPrompt = "Admin or Driver (A or D): ";
             System.out.print(catPrompt);
             String cat = validation.employeeTypeInput(sc, catPrompt, "Invalid input. Please enter A or D.");

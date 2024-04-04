@@ -142,8 +142,10 @@ public class TripUtility {
             sc.nextLine();
             System.out.print("Departure: ");
             String departure = validation.getJustStringInput(sc, "Departure: ", "Invalid input. Please enter a valid departure.");
+            departure = validation.capitaliseFirstLetter(departure);
             System.out.print("Destination: ");
             String destination = validation.getJustStringInput(sc, "Destination: ", "Invalid input. Please enter a valid destination.");
+            destination = validation.capitaliseFirstLetter(destination);
             // add the leg to the trip
             trplg.add(new TripLeg(legNumber, departure, destination));
         }
