@@ -123,8 +123,8 @@ public class Validation {
 
     // Method to read a date in the format DD/MM/YYYY and loop until a valid date is entered
     public String readDate(Scanner scan, String prompt) {
-        // Create a SimpleDateFormat object with the date format "dd/MM/yyyy"
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        // Create a SimpleDateFormat object with the date format "dd-MM-yyyy"
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         dateFormat.setLenient(false);
 
         // Loop until a valid date is entered
@@ -135,7 +135,7 @@ public class Validation {
                 Date date = dateFormat.parse(dateStr);
                 return dateFormat.format(date);
             } catch (ParseException var6) {
-                System.out.println("Please enter a date in the format DD/MM/YYYY.");
+                System.out.println("Please enter a date in the format DD-MM-YYYY.");
             }
         }
     }
