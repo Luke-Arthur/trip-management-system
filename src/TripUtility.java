@@ -28,9 +28,9 @@ public class TripUtility {
     // Load trip data from file
     public void loadTripData(ArrayList<Trip> trips) {
         Trip aTrip;
-
         String fName = "trips.txt";
         Path pathway = Paths.get(fName);
+        // try to load the trip data from the file and catch any exceptions
         try {
             // Check if the file exists
             if(Files.exists(pathway)) {
@@ -46,15 +46,6 @@ public class TripUtility {
                         // Ensure the trip has at least one leg before adding
                         if (!aTrip.getLegs().isEmpty()) {
                             trips.add(aTrip);
-                  /*    else set a default trip with one leg and add it to the list. This is a fail-safe to ensure the program does not crash.
-                        This is because the program will crash if a trip is added with no legs. A trip must have at least one leg. If the trip has no legs, it is invalid.
-                        If a trip doesn't have a leg, the trip is still a valid trip. It will be auto assigned a default leg and the value of the leg will be "Default".
-                        This is to ensure when the program reads the file, it doesn't crash if a trip has no legs. It also ensures that the program doesn't crash if a trip has no legs.
-                         - a trip must have at least one leg. A default Destination and Departure will be assigned to the leg and can be changed by the user if we update the program to allow this.
-                         - if a trip has no legs, it is invalid. the simple solution is to auto assign a default leg to the trip.
-                         - Considering a trip isn't a trip without at least one leg. We needed to work out how to handle a trip with no legs if one was found in the file.
-                         - I have already handled this happening in option 9 where we add a trip. User input is validated to ensure a trip has at least one leg.
-                        */
 
                         } else {
                             System.out.println("Auto assigned a default trip.");
@@ -70,7 +61,6 @@ public class TripUtility {
                 }
                 else
                     System.out.printf("File %s does not exist", pathway);
-
             }
         }
         // catch any IO exceptions
